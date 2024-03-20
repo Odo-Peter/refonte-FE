@@ -10,8 +10,10 @@
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.0.4",
+    "@radix-ui/react-scroll-area": "^1.0.5",
     "@radix-ui/react-tooltip": "^1.0.7",
     "@syncfusion/ej2-react-popups": "^25.1.35",
+    "@tanstack/react-table": "^8.14.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "lucide-react": "^0.358.0",
@@ -19,6 +21,7 @@
     "react": "^18",
     "react-dom": "^18",
     "tailwind-merge": "^2.2.2",
+    "tailwind-scrollbar": "^3.1.0",
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {

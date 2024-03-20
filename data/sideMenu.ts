@@ -1,5 +1,7 @@
 import {
+  AppWindow,
   AreaChart,
+  BadgeDollarSign,
   BarChart3,
   BookKeyIcon,
   CalendarClock,
@@ -9,6 +11,7 @@ import {
   LayoutDashboardIcon,
   LineChart,
   PieChart,
+  Scroll,
   User,
 } from 'lucide-react';
 
@@ -37,6 +40,18 @@ export const links = [
       {
         name: 'courses',
         icon: BookKeyIcon,
+      },
+      {
+        name: 'applications',
+        icon: AppWindow,
+      },
+      {
+        name: 'enrollment',
+        icon: Scroll,
+      },
+      {
+        name: 'earnings',
+        icon: BadgeDollarSign,
       },
     ],
   },

@@ -1,23 +1,21 @@
-import NavBar from "@/components/NavBar";
-import SideBar from "@/components/SideBar";
+import NavBar from '@/components/NavBar';
+import SideBar from '@/components/SideBar';
 
-const DashboardLayout = ({children} : {
-    children: React.ReactNode;
-}) => {
+const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <section className="h-full relative">
-        <div className="hidden h-full md:flex md:flex-col md:fixed md:inset-y-0 w-72 overflow-y-auto overflow-x-hidden">
-            <div>
-                <SideBar />
-            </div>
+    <section className="h-full relative w-full">
+      <div className="hidden h-full md:flex md:flex-col md:fixed md:inset-y-0 w-[16rem] overflow-y-auto">
+        <div>
+          <SideBar />
         </div>
-      
-        <div className="md:ml-72">
-            <NavBar />
-            {children}
-        </div>
-    </section>
-  )
-}
+      </div>
 
-export default DashboardLayout
+      <div className="md:ml-[16rem]">
+        <NavBar />
+        {children}
+      </div>
+    </section>
+  );
+};
+
+export default DashboardLayout;
