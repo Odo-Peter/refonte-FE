@@ -31,8 +31,9 @@ const Dashboard = () => {
             key={data.href}
             cardTitle={data.cardTitle}
             totalNumber={data.totalNumber}
+            cardColor={data.cardColor}
             href={data.href}
-            icon={<data.icon className="h-[30px] w-[30px] text-gray-800" />}
+            icon={<data.icon className="h-[28px] w-[28px] text-gray-50" />}
           />
         ))}
       </div>

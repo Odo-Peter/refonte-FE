@@ -35,7 +35,7 @@ const SideBar = () => {
                 className={cn(
                   'flex items-center gap-x-4 my-2 py-3 px-6 text-gray-800',
                   pathname === `/${link.name}`
-                    ? 'bg-gray-900/10'
+                    ? 'bg-blue-700/10 text-blue-600'
                     : 'hover:bg-gray-800/10'
                 )}
               >
