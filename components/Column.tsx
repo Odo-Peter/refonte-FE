@@ -68,8 +68,12 @@ export const columns: ColumnDef<AdminsData>[] = [
     cell: ({ row }) => {
       const admin = row.original;
       // console.log(admin);
-      const { handleViewClick, handleUpdateClick, handleDeleteClick } =
-        useClicked();
+      const {
+        handleViewClick,
+        handleUpdateClick,
+        handleDeleteClick,
+        handleAdminDetails,
+      } = useClicked();
 
       return (
         <DropdownMenu>
@@ -84,9 +88,7 @@ export const columns: ColumnDef<AdminsData>[] = [
             <DropdownMenuItem
               className="cursor-pointer"
               onClick={() => {
-                toast.success(`Successfully copied ${admin.id}`, {
-                  position: 'top-center',
-                });
+                toast.success(`Successfully copied ${admin.id}`, {});
                 return navigator.clipboard.writeText(admin.id);
               }}
             >
@@ -108,7 +110,10 @@ export const columns: ColumnDef<AdminsData>[] = [
             </DropdownMenuItem>
             <DropdownMenuItem
               className="cursor-pointer"
-              onClick={handleDeleteClick}
+              onClick={() => {
+                handleAdminDetails(admin);
+                handleDeleteClick();
+              }}
             >
               Delete admin
             </DropdownMenuItem>

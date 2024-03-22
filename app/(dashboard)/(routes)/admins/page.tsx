@@ -32,10 +32,10 @@ const Admins = () => {
         </div>
         <div>
           <h2 className="font-semibold text-gray-600">Add new administrator</h2>
-          <AdminForm />
+          <div className="container mx-auto">
+            <AdminForm />
+          </div>
         </div>
-        <div>Update Admins Info</div>
-        <div>Delete Admins</div>
       </div>
     </section>
   );

@@ -47,7 +47,7 @@ const AdminForm = () => {
                 <input
                   type="text"
                   placeholder="Name e.g Arya Stark"
-                  className=" text-[13px] outline-none px-3 md:px-4 py-[10px] focus:border-gray-400 active:border-gray-400 active:outline-none border focus:placeholder:opacity-75 border-gray-300 placeholder:text-gray-400 rounded-md text-gray-700 md:w-[60%] lg:w-[50%]"
+                  className=" text-[13px] outline-none px-3 md:px-4 py-[10px] focus:border-gray-400 active:border-gray-400 active:outline-none border focus:placeholder:opacity-75 border-gray-300 placeholder:text-gray-400 rounded-md text-gray-700 lg:w-[60%]"
                   {...field}
                 />
               </FormControl>
@@ -65,7 +65,7 @@ const AdminForm = () => {
                 <input
                   type="text"
                   placeholder="Contact number e.g +234 9068101500"
-                  className=" text-[13px] outline-none px-3 md:px-4 py-[10px] focus:border-gray-400 active:border-gray-400 active:outline-none border focus:placeholder:opacity-75 border-gray-300 placeholder:text-gray-400 rounded-md text-gray-700 md:w-[60%] lg:w-[50%]"
+                  className=" text-[13px] outline-none px-3 md:px-4 py-[10px] focus:border-gray-400 active:border-gray-400 active:outline-none border focus:placeholder:opacity-75 border-gray-300 placeholder:text-gray-400 rounded-md text-gray-700 lg:w-[60%]"
                   {...field}
                 />
               </FormControl>
@@ -83,7 +83,7 @@ const AdminForm = () => {
                 <input
                   type="text"
                   placeholder="Email e.g aryastark@gmail.com"
-                  className=" text-[13px] outline-none px-3 md:px-4 py-[10px] focus:border-gray-400 active:border-gray-400 active:outline-none border focus:placeholder:opacity-75 border-gray-300 placeholder:text-gray-400 rounded-md text-gray-700 md:w-[60%] lg:w-[50%]"
+                  className="text-[13px] outline-none px-3 md:px-4 py-[10px] focus:border-gray-400 active:border-gray-400 active:outline-none border focus:placeholder:opacity-75 border-gray-300 placeholder:text-gray-400 rounded-md text-gray-700 lg:w-[60%]"
                   {...field}
                 />
               </FormControl>
@@ -92,7 +92,7 @@ const AdminForm = () => {
           )}
         />
         <Button
-          className="bg-blue-700 hover:bg-blue-600 text-gray-50 md:w-[60%] lg:w-[50%]"
+          className="bg-blue-700 hover:bg-blue-600 text-gray-50 w-full lg:w-[60%]"
           type="submit"
         >
           Submit

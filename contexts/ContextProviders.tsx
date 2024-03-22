@@ -6,11 +6,19 @@ type clickedContextType = {
   toDelete: boolean;
   notification: boolean;
   chat: boolean;
+  adminDetails: {
+    id: string;
+    name: string;
+    contactNumber: string;
+    email: string;
+    joined: string;
+  };
   handleViewClick: () => void;
   handleUpdateClick: () => void;
   handleDeleteClick: () => void;
   handleNotificationClick: () => void;
   handleChatClick: () => void;
+  handleAdminDetails: (admin: any) => void;
 };
 
 const clickedContextDefaultValues: clickedContextType = {
@@ -19,11 +27,19 @@ const clickedContextDefaultValues: clickedContextType = {
   toDelete: false,
   notification: false,
   chat: false,
+  adminDetails: {
+    id: '',
+    name: '',
+    contactNumber: '',
+    email: '',
+    joined: '',
+  },
   handleViewClick: () => {},
   handleUpdateClick: () => {},
   handleDeleteClick: () => {},
   handleNotificationClick: () => {},
   handleChatClick: () => {},
+  handleAdminDetails: (admin: any) => {},
 };
 
 const ClickedContext = createContext<clickedContextType>(
@@ -48,12 +64,17 @@ export function ClickProvider({ children }: Props) {
     useState<boolean>(false);
   const [isChatClicked, setIsChatClicked] = useState<boolean>(false);
 
+  const [adminDetails, setAdminDetails] = useState<
+    clickedContextType['adminDetails']
+  >(clickedContextDefaultValues.adminDetails);
+
   const handleViewClick = () => setIsViewClicked((prev) => !prev);
   const handleUpdateClick = () => setIsUpdateClicked((prev) => !prev);
   const handleDeleteClick = () => setIsDeleteClicked((prev) => !prev);
   const handleNotificationClick = () =>
     setIsNotificationClicked((prev) => !prev);
   const handleChatClick = () => setIsChatClicked((prev) => !prev);
+  const handleAdminDetails = (admin: any) => setAdminDetails(admin);
 
   const value = {
     handleViewClick,
@@ -61,11 +82,19 @@ export function ClickProvider({ children }: Props) {
     handleDeleteClick,
     handleNotificationClick,
     handleChatClick,
+    handleAdminDetails,
     view: isViewClicked,
     update: isUpdateClicked,
     toDelete: isDeleteClicked,
     notification: isNotificationClicked,
     chat: isChatClicked,
+    adminDetails: {
+      id: adminDetails.id,
+      name: adminDetails.name,
+      contactNumber: adminDetails.contactNumber,
+      email: adminDetails.email,
+      joined: adminDetails.joined,
+    },
   };
 
   return (
