@@ -15,7 +15,7 @@ import {
   useReactTable,
 } from '@tanstack/react-table';
 
-import { ArrowDown } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -74,16 +74,16 @@ export function DataTable<TData, TValue>({
           onChange={(event) =>
             table.getColumn('email')?.setFilterValue(event.target.value)
           }
-          className=" text-[13px] outline-none px-3 md:px-4 py-[6px] focus:border-gray-300 active:border-gray-300 active:outline-none border focus:placeholder:opacity-75 border-gray-300 placeholder:text-gray-400 rounded-md text-gray-700 max-w-sm"
+          className=" text-[13px] outline-none px-3 md:px-4 py-[6px] focus:border-gray-400 active:border-gray-400 active:outline-none border focus:placeholder:opacity-75 border-gray-300 placeholder:text-gray-400 rounded-md text-gray-700 max-w-sm"
         />
 
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button
               variant="outline"
-              className="ml-auto text-[13px] flex items-center border-gray-300 hover:gray-500/10"
+              className="ml-auto text-[13px] hover:bg-gray-500/10 flex items-center border-gray-300 hover:gray-500/10"
             >
-              Columns <ArrowDown className="h-3 w-3 text-gray-600 ml-2" />
+              Columns <ChevronDown className="h-3 w-3 text-gray-600 ml-2" />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">

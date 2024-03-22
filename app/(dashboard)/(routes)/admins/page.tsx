@@ -4,17 +4,17 @@ import { useClicked } from '@/contexts/ContextProviders';
 
 import Header from '@/components/Header';
 import { columns } from '@/components/Column';
-import { DataTable } from '@/components/DataTable';
+import { DataTable } from '@/components/common/DataTable';
 import { admins } from '@/data/tableData';
-import AdminForm from '@/components/AdminForm';
-import DeleteAlert from '@/components/DeleteAlert';
+import AdminForm from '@/components/admin-components/AdminForm';
+import ModalContainer from '@/components/ui/ModalContainer';
 
 const Admins = () => {
-  const { isDeleteBtn, isClicked } = useClicked();
+  const { view, update, toDelete } = useClicked();
 
   return (
     <section className="relative flex flex-col p-8 mt-3 mx-3 bg-white h-full rounded">
-      <DeleteAlert />
+      {(view || update || toDelete) && <ModalContainer />}
       <Header title="Peter Odo" category="peter@mail.com" />
 
       <div className="absolute top-4 right-4">

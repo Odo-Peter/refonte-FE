@@ -1,8 +1,10 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 'use client';
 
 import { ColumnDef } from '@tanstack/react-table';
-
 import { toast } from 'react-toastify';
+
+import { useClicked } from '@/contexts/ContextProviders';
 
 import { ArrowUpDown, MoreHorizontal } from 'lucide-react';
 
@@ -65,6 +67,9 @@ export const columns: ColumnDef<AdminsData>[] = [
     id: 'actions',
     cell: ({ row }) => {
       const admin = row.original;
+      // console.log(admin);
+      const { handleViewClick, handleUpdateClick, handleDeleteClick } =
+        useClicked();
 
       return (
         <DropdownMenu>
@@ -90,26 +95,20 @@ export const columns: ColumnDef<AdminsData>[] = [
 
             <DropdownMenuItem
               className="cursor-pointer"
-              onClick={() =>
-                console.log('TODO: Implement open specific admin page')
-              }
+              onClick={handleViewClick}
             >
               View admin details
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem
               className="cursor-pointer"
-              onClick={() =>
-                console.log('TODO: Implement open specific admin page')
-              }
+              onClick={handleUpdateClick}
             >
               Update admin details
             </DropdownMenuItem>
             <DropdownMenuItem
               className="cursor-pointer"
-              onClick={() =>
-                console.log('TODO: Implement open specific admin page')
-              }
+              onClick={handleDeleteClick}
             >
               Delete admin
             </DropdownMenuItem>

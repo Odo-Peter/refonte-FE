@@ -12,7 +12,7 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form';
-import { Button } from './ui/button';
+import { Button } from '../ui/button';
 
 const AdminForm = () => {
   const form = useForm<z.infer<typeof formSchema>>({
@@ -35,7 +35,7 @@ const AdminForm = () => {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="space-y-4 mt-6 ml-8"
+        className="space-y-4 mt-6 mx-auto"
       >
         <FormField
           control={form.control}
@@ -47,7 +47,7 @@ const AdminForm = () => {
                 <input
                   type="text"
                   placeholder="Name e.g Arya Stark"
-                  className=" text-[13px] outline-none px-3 md:px-4 py-[10px] focus:border-gray-300 active:border-gray-300 active:outline-none border focus:placeholder:opacity-75 border-gray-300 placeholder:text-gray-400 rounded-md text-gray-700 md:w-[70%] lg:w-[60%]"
+                  className=" text-[13px] outline-none px-3 md:px-4 py-[10px] focus:border-gray-400 active:border-gray-400 active:outline-none border focus:placeholder:opacity-75 border-gray-300 placeholder:text-gray-400 rounded-md text-gray-700 md:w-[60%] lg:w-[50%]"
                   {...field}
                 />
               </FormControl>
@@ -65,7 +65,7 @@ const AdminForm = () => {
                 <input
                   type="text"
                   placeholder="Contact number e.g +234 9068101500"
-                  className=" text-[13px] outline-none px-3 md:px-4 py-[10px] focus:border-gray-300 active:border-gray-300 active:outline-none border focus:placeholder:opacity-75 border-gray-300 placeholder:text-gray-400 rounded-md text-gray-700 md:w-[70%] lg:w-[60%]"
+                  className=" text-[13px] outline-none px-3 md:px-4 py-[10px] focus:border-gray-400 active:border-gray-400 active:outline-none border focus:placeholder:opacity-75 border-gray-300 placeholder:text-gray-400 rounded-md text-gray-700 md:w-[60%] lg:w-[50%]"
                   {...field}
                 />
               </FormControl>
@@ -83,7 +83,7 @@ const AdminForm = () => {
                 <input
                   type="text"
                   placeholder="Email e.g aryastark@gmail.com"
-                  className=" text-[13px] outline-none px-3 md:px-4 py-[10px] focus:border-gray-300 active:border-gray-300 active:outline-none border focus:placeholder:opacity-75 border-gray-300 placeholder:text-gray-400 rounded-md text-gray-700 md:w-[70%] lg:w-[60%]"
+                  className=" text-[13px] outline-none px-3 md:px-4 py-[10px] focus:border-gray-400 active:border-gray-400 active:outline-none border focus:placeholder:opacity-75 border-gray-300 placeholder:text-gray-400 rounded-md text-gray-700 md:w-[60%] lg:w-[50%]"
                   {...field}
                 />
               </FormControl>
@@ -92,7 +92,7 @@ const AdminForm = () => {
           )}
         />
         <Button
-          className="bg-blue-700 hover:bg-blue-600 text-gray-50 md:w-[70%] lg:w-[60%]"
+          className="bg-blue-700 hover:bg-blue-600 text-gray-50 md:w-[60%] lg:w-[50%]"
           type="submit"
         >
           Submit

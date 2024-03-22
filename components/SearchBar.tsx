@@ -8,7 +8,7 @@ const SearchBar = () => {
       <input
         type="text"
         placeholder="Search dashboard..."
-        className=" text-[13px] outline-none px-3 md:px-4 py-[6px] focus:border-gray-300 active:border-gray-300 active:outline-none border focus:placeholder:opacity-75 border-gray-300 placeholder:text-gray-400 rounded-md text-gray-700 md:w-1/2"
+        className=" text-[13px] outline-none px-3 md:px-4 py-[6px] focus:border-gray-400 active:border-gray-400 active:outline-none border focus:placeholder:opacity-75 border-gray-300 placeholder:text-gray-400 rounded-md text-gray-700 md:w-1/2"
       />
 
       <SearchIcon

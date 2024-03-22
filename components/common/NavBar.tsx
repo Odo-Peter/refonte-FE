@@ -1,15 +1,16 @@
 'use client';
 
+import { BellIcon, ChevronDown, MailIcon, Menu } from 'lucide-react';
+
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
-import { BellIcon, MailIcon, Menu } from 'lucide-react';
 
-import SearchBar from './SearchBar';
-import UserAvatar from './UserAvatar';
+import SearchBar from '../SearchBar';
+import UserAvatar from '../UserAvatar';
 
 interface NavButtonProps {
   title?: string;
@@ -71,6 +72,10 @@ const NavBar = () => {
         >
           <UserAvatar />
           <p className="text-sm font-semibold">Peter</p>
+          <button className="p-2 hover:bg-gray-950/10 rounded-full">
+            {' '}
+            <ChevronDown className="w-4 h-4" />{' '}
+          </button>
         </div>
       </div>
     </nav>

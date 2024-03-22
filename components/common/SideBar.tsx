@@ -12,7 +12,7 @@ const SideBar = () => {
   const pathname = usePathname();
 
   return (
-    <section className="bg-white py-4">
+    <section className="bg-white py-4 h-full">
       <div className="px-4 md:px-8 mb-12">
         <Link
           href={'/overview'}
@@ -35,8 +35,8 @@ const SideBar = () => {
                 className={cn(
                   'flex items-center gap-x-4 my-2 py-3 px-6 text-gray-800',
                   pathname === `/${link.name}`
-                    ? 'bg-blue-700/10 text-blue-600'
-                    : 'hover:bg-gray-800/10'
+                    ? 'bg-blue-600 text-white'
+                    : 'hover:bg-blue-800/10'
                 )}
               >
                 <link.icon className="h-4 w-4 opacity-90 hover:opacity-100" />
