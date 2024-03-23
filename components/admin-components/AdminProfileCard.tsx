@@ -2,12 +2,6 @@ import { X } from 'lucide-react';
 
 import { useClicked } from '@/contexts/ContextProviders';
 
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from '@/components/ui/tooltip';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 const AdminProfileCard = () => {
@@ -23,30 +17,36 @@ const AdminProfileCard = () => {
           </Avatar>
         </div>
 
-        <TooltipProvider>
-          <Tooltip>
-            <TooltipTrigger
-              type="button"
-              onClick={handleViewClick}
-              className="flex items-center justify-center absolute right-0 top-0  w-6 h-6 hover:bg-red-600 rounded-tr-lg rounded-bl-sm"
-            >
-              <X className="text-gray-50 h-4 w-4 font-bold" />
-            </TooltipTrigger>
-            <TooltipContent>
-              <p className="text-[10px]">Close</p>
-            </TooltipContent>
-          </Tooltip>
-        </TooltipProvider>
+        <button
+          type="button"
+          onClick={handleViewClick}
+          className="flex items-center justify-center absolute right-0 top-0  w-6 h-6 hover:bg-red-600 rounded-tr-lg rounded-bl-sm"
+        >
+          <X className="text-gray-50 h-4 w-4 font-bold" />
+        </button>
       </div>
-      <div className="mt-8 mb-2 flex flex-col px-8">
-        <h4 className="font-bold text-2xl text-gray-900">Peter Odo</h4>
-        <p className="text-xs font-light text-muted-foreground">
-          id: 75edgdsf637qlsdsdt08ilm2
-        </p>
-        {/* <p className="text-sm font-semibold text-muted-foreground">
+
+      <div className="px-8">
+        <div className="flex justify-between mt-8 mb-2">
+          <div className="flex flex-col">
+            <h4 className="font-bold text-2xl text-gray-900">Peter Odo</h4>
+            <p className="text-xs font-light text-muted-foreground mb-2">
+              id: 75edgdsf637qlsdsdt08ilm2
+            </p>
+            <p className="text-sm font-semibold text-muted-foreground">
+              peter@mail.com
+            </p>
+            <p className="text-xs text-muted-foreground">(+234) 9068101500</p>
+            {/* <p className="text-sm font-semibold text-muted-foreground">
           peter@mail.com
         </p>
         <p className="text-xs text-muted-foreground">(+234) 9068101500</p> */}
+          </div>
+
+          <div className="flex items-end">
+            <p className="text-xs text-muted-foreground">Joined 2/12/24</p>
+          </div>
+        </div>
       </div>
     </div>
   );

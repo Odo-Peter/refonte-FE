@@ -104,7 +104,10 @@ export const columns: ColumnDef<AdminsData>[] = [
             <DropdownMenuSeparator />
             <DropdownMenuItem
               className="cursor-pointer"
-              onClick={handleUpdateClick}
+              onClick={() => {
+                handleAdminDetails(admin);
+                handleUpdateClick();
+              }}
             >
               Update admin details
             </DropdownMenuItem>
