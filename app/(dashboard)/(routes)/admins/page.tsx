@@ -1,5 +1,8 @@
 'use client';
 
+import { gql, useQuery } from '@apollo/client';
+// import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
+
 import { useClicked } from '@/contexts/ContextProviders';
 
 import Header from '@/components/Header';
@@ -10,7 +13,44 @@ import AdminForm from '@/components/admin-components/AdminForm';
 import ModalContainer from '@/components/ui/ModalContainer';
 
 const Admins = () => {
+  const GET_ADMINS = gql`
+    query GetAdmins {
+      admins {
+        _id
+        name
+        email
+        contactNumber
+        role
+        createdAt
+        updatedAt
+      }
+    }
+  `;
+
   const { view, update, toDelete } = useClicked();
+  const { data, error } = useQuery(GET_ADMINS);
+
+  // console.log('Result: ', result);
+  console.log('Data: ', data);
+  console.log('Error: ', error);
+
+  // client
+  //   .query({
+  //     query: gql`
+  //       query GetAdmins {
+  //         admins {
+  //           _id
+  //           name
+  //           email
+  //           contactNumber
+  //           role
+  //           createdAt
+  //           updatedAt
+  //         }
+  //       }
+  //     `,
+  //   })
+  //   .then((res) => console.log(res));
 
   return (
     <section className="relative flex flex-col p-8 mt-3 mx-3 bg-white h-full rounded">
