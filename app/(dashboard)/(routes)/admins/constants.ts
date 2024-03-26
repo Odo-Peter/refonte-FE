@@ -9,10 +9,14 @@ export const formSchema = z.object({
     .min(4, {
       message: 'Contact info is recommended',
     })
-    .optional(),
+    .optional()
+    .default('Not available'),
   email: z
     .string()
     .email({ message: 'Invalid email address' })
     .trim()
     .toLowerCase(),
+  password: z.string().min(3, {
+    message: 'Password should be above 3 characters',
+  }),
 });

@@ -21,6 +21,7 @@ const AdminForm = () => {
       name: '',
       contactNumber: '',
       email: '',
+      password: '',
     },
   });
 
@@ -83,6 +84,24 @@ const AdminForm = () => {
                 <input
                   type="text"
                   placeholder="Email e.g aryastark@gmail.com"
+                  className="text-[13px] outline-none px-3 md:px-4 py-[10px] focus:border-gray-400 active:border-gray-400 active:outline-none border focus:placeholder:opacity-75 border-gray-300 placeholder:text-gray-400 rounded-md text-gray-700 lg:w-[60%]"
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="password"
+          render={({ field }) => (
+            <FormItem className="flex flex-col">
+              <FormLabel className="font-bold text-sm">Password</FormLabel>
+              <FormControl>
+                <input
+                  type="password"
+                  placeholder="Enter password"
                   className="text-[13px] outline-none px-3 md:px-4 py-[10px] focus:border-gray-400 active:border-gray-400 active:outline-none border focus:placeholder:opacity-75 border-gray-300 placeholder:text-gray-400 rounded-md text-gray-700 lg:w-[60%]"
                   {...field}
                 />

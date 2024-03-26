@@ -15,7 +15,7 @@ import NavBar from '@/components/common/NavBar';
 import SideBar from '@/components/common/SideBar';
 
 const httpLink = createHttpLink({
-  uri: 'http://localhost:4000/',
+  uri: 'http://localhost:4000/' ?? '',
 });
 
 const authLink = setContext((_, { headers }) => {

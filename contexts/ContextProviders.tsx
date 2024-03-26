@@ -7,11 +7,11 @@ type clickedContextType = {
   notification: boolean;
   chat: boolean;
   adminDetails: {
-    id: string;
+    _id: string;
     name: string;
     contactNumber: string;
     email: string;
-    joined: string;
+    createdAt: string;
   };
   handleViewClick: () => void;
   handleUpdateClick: () => void;
@@ -28,11 +28,11 @@ const clickedContextDefaultValues: clickedContextType = {
   notification: false,
   chat: false,
   adminDetails: {
-    id: '',
+    _id: '',
     name: '',
     contactNumber: '',
     email: '',
-    joined: '',
+    createdAt: '',
   },
   handleViewClick: () => {},
   handleUpdateClick: () => {},
@@ -89,11 +89,11 @@ export function ClickProvider({ children }: Props) {
     notification: isNotificationClicked,
     chat: isChatClicked,
     adminDetails: {
-      id: adminDetails.id,
+      _id: adminDetails._id,
       name: adminDetails.name,
       contactNumber: adminDetails.contactNumber,
       email: adminDetails.email,
-      joined: adminDetails.joined,
+      createdAt: adminDetails.createdAt,
     },
   };
 

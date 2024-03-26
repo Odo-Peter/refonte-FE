@@ -2,6 +2,8 @@ import { X } from 'lucide-react';
 
 import { useClicked } from '@/contexts/ContextProviders';
 
+import { dateConverter } from '@/helpers/dateConverter';
+
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '../ui/button';
 
@@ -25,13 +27,13 @@ const DeleteAdminCard = () => {
               {adminDetails.name}
             </h4>
             <p className="text-xs font-light text-muted-foreground mb-2">
-              id: {adminDetails.id}
+              id: {adminDetails._id}
             </p>
             <p className="text-sm font-semibold text-muted-foreground">
-              {adminDetails.email}
+              Email: {adminDetails.email}
             </p>
             <p className="text-xs text-muted-foreground">
-              {adminDetails.contactNumber}
+              Contact: {adminDetails.contactNumber || 'Not available'}
             </p>
           </div>
           <div className="flex flex-col gap-y-2 items-end justify-between">
@@ -39,7 +41,9 @@ const DeleteAdminCard = () => {
               <AvatarImage src="/avatar1.jpg" alt="user-profile" />
               <AvatarFallback>PO</AvatarFallback>
             </Avatar>
-            <p className="text-xs text-muted-foreground">Joined 2/12/24</p>
+            <p className="text-xs text-muted-foreground">
+              Joined: {dateConverter(adminDetails.createdAt)}
+            </p>
           </div>
         </div>
       </div>

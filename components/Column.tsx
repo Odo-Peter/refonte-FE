@@ -19,11 +19,10 @@ import {
 } from '@/components/ui/dropdown-menu';
 
 export type AdminsData = {
-  id: string;
+  _id: string;
   name: string;
   contactNumber: string;
   email: string;
-  joined: string;
 };
 
 export const columns: ColumnDef<AdminsData>[] = [
@@ -60,10 +59,6 @@ export const columns: ColumnDef<AdminsData>[] = [
     header: 'Contact',
   },
   {
-    accessorKey: 'joined',
-    header: 'Joined',
-  },
-  {
     id: 'actions',
     cell: ({ row }) => {
       const admin = row.original;
@@ -88,8 +83,8 @@ export const columns: ColumnDef<AdminsData>[] = [
             <DropdownMenuItem
               className="cursor-pointer"
               onClick={() => {
-                toast.success(`Successfully copied ${admin.id}`, {});
-                return navigator.clipboard.writeText(admin.id);
+                toast.success(`Successfully copied ${admin._id}`, {});
+                return navigator.clipboard.writeText(admin._id);
               }}
             >
               Copy admin ID
@@ -97,7 +92,10 @@ export const columns: ColumnDef<AdminsData>[] = [
 
             <DropdownMenuItem
               className="cursor-pointer"
-              onClick={handleViewClick}
+              onClick={() => {
+                handleAdminDetails(admin);
+                handleViewClick();
+              }}
             >
               View admin details
             </DropdownMenuItem>
