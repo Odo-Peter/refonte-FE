@@ -15,6 +15,7 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Button } from '@/components/ui/button';
+import { Loader2 } from 'lucide-react';
 
 const EditAdminForm = () => {
   const form = useForm<z.infer<typeof formSchema>>({
@@ -23,6 +24,7 @@ const EditAdminForm = () => {
       name: '',
       contactNumber: '',
       email: '',
+      password: '',
     },
   });
 
@@ -48,7 +50,7 @@ const EditAdminForm = () => {
                 <input
                   type="text"
                   placeholder="Name e.g Arya Stark"
-                  className=" text-[13px] outline-none px-3 md:px-4 py-[10px] focus:border-gray-400 active:border-gray-400 active:outline-none border focus:placeholder:opacity-75 border-gray-300 placeholder:text-gray-400 rounded-md text-gray-700"
+                  className=" text-[13px] outline-none px-3 md:px-4 py-[8px] focus:border-gray-400 active:border-gray-400 active:outline-none border focus:placeholder:opacity-75 border-gray-300 placeholder:text-gray-400 rounded-md text-gray-700"
                   {...field}
                 />
               </FormControl>
@@ -66,7 +68,7 @@ const EditAdminForm = () => {
                 <input
                   type="text"
                   placeholder="Contact number e.g +234 9068101500"
-                  className=" text-[13px] outline-none px-3 md:px-4 py-[10px] focus:border-gray-400 active:border-gray-400 active:outline-none border focus:placeholder:opacity-75 border-gray-300 placeholder:text-gray-400 rounded-md text-gray-700"
+                  className=" text-[13px] outline-none px-3 md:px-4 py-[8px] focus:border-gray-400 active:border-gray-400 active:outline-none border focus:placeholder:opacity-75 border-gray-300 placeholder:text-gray-400 rounded-md text-gray-700"
                   {...field}
                 />
               </FormControl>
@@ -84,7 +86,25 @@ const EditAdminForm = () => {
                 <input
                   type="text"
                   placeholder="Email e.g aryastark@gmail.com"
-                  className="text-[13px] outline-none px-3 md:px-4 py-[10px] focus:border-gray-400 active:border-gray-400 active:outline-none border focus:placeholder:opacity-75 border-gray-300 placeholder:text-gray-400 rounded-md text-gray-700"
+                  className="text-[13px] outline-none px-3 md:px-4 py-[8px] focus:border-gray-400 active:border-gray-400 active:outline-none border focus:placeholder:opacity-75 border-gray-300 placeholder:text-gray-400 rounded-md text-gray-700"
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="password"
+          render={({ field }) => (
+            <FormItem className="flex flex-col">
+              <FormLabel className="font-bold text-sm">Password</FormLabel>
+              <FormControl>
+                <input
+                  type="password"
+                  placeholder="Default password was '123456'"
+                  className="text-[13px] outline-none px-3 md:px-4 py-[8px] focus:border-gray-400 active:border-gray-400 active:outline-none border focus:placeholder:opacity-75 border-gray-300 placeholder:text-gray-400 rounded-md text-gray-700 lg:w-[60%]"
                   {...field}
                 />
               </FormControl>
@@ -103,10 +123,17 @@ const EditAdminForm = () => {
             Cancel
           </Button>
           <Button
-            className="bg-blue-700 hover:bg-blue-600 text-gray-50 "
+            className="bg-blue-700 hover:bg-blue-600 text-gray-50 w-full lg:w-[60%]"
             type="submit"
           >
-            Submit
+            {true ? (
+              'Submit'
+            ) : (
+              <>
+                <span>Submiting...</span>
+                <Loader2 className="ml-2 w-4 h-4 font-semibold animate-spin" />
+              </>
+            )}
           </Button>
         </div>
       </form>

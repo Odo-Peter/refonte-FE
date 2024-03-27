@@ -1,14 +1,31 @@
-import { X } from 'lucide-react';
+import { useMutation } from '@apollo/client';
+
+import { Loader2, X } from 'lucide-react';
 
 import { useClicked } from '@/contexts/ContextProviders';
 
 import { dateConverter } from '@/helpers/dateConverter';
+import {
+  GET_ADMINS,
+  REMOVE_ADMIN,
+} from '@/helpers/graphql-queries/admin-queries/adminQuery';
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '../ui/button';
 
 const DeleteAdminCard = () => {
-  const { handleDeleteClick, adminDetails } = useClicked();
+  const { handleDeleteClick, adminDetails, handleAdminDetails } = useClicked();
+  const [deleteAdmin, { loading, error }] = useMutation(REMOVE_ADMIN, {
+    refetchQueries: [GET_ADMINS],
+  });
+
+  const handleDeleteAdmin = (adminId: string) => {
+    try {
+      deleteAdmin({ variables: { deleteAdminId: adminId } });
+    } catch (error: any) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className="fixed flex flex-col left-[50%] top-[50%] z-50 w-full max-w-md translate-x-[-50%] translate-y-[-50%] gap-4 bg-gray-50 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] rounded-lg">
@@ -21,6 +38,7 @@ const DeleteAdminCard = () => {
       </button>
 
       <div className="px-8">
+        {error && <div>Something went wrong {error.message}</div>}
         <div className="flex justify-between mt-8 mb-2">
           <div className="flex flex-col">
             <h4 className="font-bold text-xl text-gray-900">
@@ -67,14 +85,25 @@ const DeleteAdminCard = () => {
             Cancel
           </Button>
           <Button
-            onClick={() =>
-              console.log('TODO: Do some deleting on the api or something')
-            }
+            onClick={() => {
+              handleDeleteAdmin(adminDetails._id);
+              handleAdminDetails({
+                _id: '',
+                name: '',
+                contactNumber: '',
+                email: '',
+                createdAt: '',
+              });
+              !loading && handleDeleteClick();
+            }}
             variant={'destructive'}
             className="bg-destructive text-destructive-foreground hover:bg-destructive/90 w-28"
             type="button"
           >
-            Continue
+            Continue{' '}
+            {loading && (
+              <Loader2 className="w-4 h-4 font-semibold ml-2 animate-spin" />
+            )}
           </Button>
         </div>
       </div>

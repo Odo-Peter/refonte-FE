@@ -10,7 +10,7 @@ export const formSchema = z.object({
       message: 'Contact info is recommended',
     })
     .optional()
-    .default('Not available'),
+    .or(z.literal('')),
   email: z
     .string()
     .email({ message: 'Invalid email address' })

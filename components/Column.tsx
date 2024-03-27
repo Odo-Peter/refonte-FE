@@ -17,6 +17,39 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { gql, useMutation } from '@apollo/client';
+
+// export const REMOVE_ADMIN = gql`
+//   mutation DeleteAdmin($deleteAdminId: String!) {
+//     deleteAdmin(id: $deleteAdminId)
+//   }
+// `;
+
+// export const deleteAdmin = (adminId: string) => {
+//   const [removeAdmin] = useMutation(REMOVE_ADMIN, {
+//     refetchQueries: [
+//       {
+//         query: gql`
+//           query GetAdmins {
+//             getAdmins {
+//               admins {
+//                 _id
+//                 name
+//                 email
+//                 contactNumber
+//                 role
+//                 createdAt
+//                 updatedAt
+//               }
+//             }
+//           }
+//         `,
+//       },
+//     ],
+//   });
+
+//   removeAdmin({ variables: { id: adminId } });
+// };
 
 export type AdminsData = {
   _id: string;

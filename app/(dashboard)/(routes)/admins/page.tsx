@@ -4,8 +4,6 @@ import { gql, useQuery } from '@apollo/client';
 
 import { useClicked } from '@/contexts/ContextProviders';
 
-// import { admins } from '@/data/tableData';
-
 import Header from '@/components/Header';
 import { columns } from '@/components/Column';
 
@@ -15,30 +13,11 @@ import TableSkeletonCard from '@/components/common/TableSkeletonCard';
 import AdminForm from '@/components/admin-components/AdminForm';
 import ModalContainer from '@/components/ui/ModalContainer';
 
-const Admins = () => {
-  const GET_ADMINS = gql`
-    query GetAdmins {
-      getAdmins {
-        admins {
-          _id
-          name
-          email
-          contactNumber
-          role
-          createdAt
-          updatedAt
-        }
-      }
-    }
-  `;
+import { GET_ADMINS } from '@/helpers/graphql-queries/admin-queries/adminQuery';
 
+const Admins = () => {
   const { view, update, toDelete } = useClicked();
   const { data, loading, error } = useQuery(GET_ADMINS);
-
-  // console.log('Data: ', data?.getAdmins?.admins);
-  // console.log('Error: ', error);
-  // console.log('Loading: ', loading);
-  // console.log(dateConverter(1301090400));
 
   return (
     <section className="relative flex flex-col p-8 mt-3 mx-3 bg-white h-full rounded">
@@ -60,7 +39,11 @@ const Admins = () => {
             ) : data?.getAdmins?.admins ? (
               <DataTable columns={columns} data={data?.getAdmins?.admins} />
             ) : (
-              <div>Something is wrong, implement error handling</div>
+              error && (
+                <div>
+                  Something is wrong, implement error handling {error.message}
+                </div>
+              )
             )}
           </div>
         </div>
