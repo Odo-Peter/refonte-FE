@@ -1,7 +1,7 @@
 import * as z from 'zod';
-import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
+import { useForm } from 'react-hook-form';
 import { useMutation } from '@apollo/client';
 
 import { formSchema } from '@/app/(dashboard)/(routes)/admins/constants';
@@ -16,6 +16,7 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form';
+import { PhoneInput } from '@/components/ui/phone-input';
 import { Button } from '../ui/button';
 
 import {
@@ -39,16 +40,16 @@ const AdminForm = () => {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
     // ✅ This will be type-safe and validated.
     // console.log(values);
-
     try {
       createAdmin({ variables: { ...values } });
     } catch (err: any) {
       console.log(err);
     } finally {
-      form.reset();
+      setTimeout(() => {
+        form.reset();
+      }, 3000);
     }
   }
 
@@ -77,24 +78,7 @@ const AdminForm = () => {
             </FormItem>
           )}
         />
-        <FormField
-          control={form.control}
-          name="contactNumber"
-          render={({ field }) => (
-            <FormItem className="flex flex-col">
-              <FormLabel className="font-bold text-sm">Contact</FormLabel>
-              <FormControl>
-                <input
-                  type="text"
-                  placeholder="Contact number e.g +234 9068101500"
-                  className=" text-[13px] outline-none px-3 md:px-4 py-[10px] focus:border-gray-400 active:border-gray-400 active:outline-none border focus:placeholder:opacity-75 border-gray-300 placeholder:text-gray-400 rounded-md text-gray-700 lg:w-[60%]"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+
         <FormField
           control={form.control}
           name="email"
@@ -113,6 +97,25 @@ const AdminForm = () => {
             </FormItem>
           )}
         />
+
+        <FormField
+          control={form.control}
+          name="contactNumber"
+          render={({ field }) => (
+            <FormItem className="flex flex-col">
+              <FormLabel className="font-bold text-sm">Contact</FormLabel>
+              <FormControl>
+                <PhoneInput
+                  className="lg:w-[60%]"
+                  placeholder="e.g +234*******"
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
         <FormField
           control={form.control}
           name="password"
@@ -131,6 +134,7 @@ const AdminForm = () => {
             </FormItem>
           )}
         />
+
         <Button
           className="bg-blue-700 hover:bg-blue-600 text-gray-50 w-full lg:w-[60%]"
           type="submit"
@@ -143,7 +147,6 @@ const AdminForm = () => {
               <Loader2 className="ml-2 w-4 h-4 font-semibold animate-spin" />
             </>
           )}
-         
         </Button>
       </form>
     </Form>

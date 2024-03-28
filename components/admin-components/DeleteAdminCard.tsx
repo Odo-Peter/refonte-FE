@@ -1,8 +1,8 @@
+import { useState } from 'react';
 import { useMutation } from '@apollo/client';
+import { useClicked } from '@/contexts/ContextProviders';
 
 import { Loader2, X } from 'lucide-react';
-
-import { useClicked } from '@/contexts/ContextProviders';
 
 import { dateConverter } from '@/helpers/dateConverter';
 import {
@@ -14,16 +14,28 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '../ui/button';
 
 const DeleteAdminCard = () => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const { handleDeleteClick, adminDetails, handleAdminDetails } = useClicked();
-  const [deleteAdmin, { loading, error }] = useMutation(REMOVE_ADMIN, {
+  const [deleteAdmin, { error }] = useMutation(REMOVE_ADMIN, {
     refetchQueries: [GET_ADMINS],
   });
 
-  const handleDeleteAdmin = (adminId: string) => {
+  const handleDeleteAdmin = async (adminId: string) => {
+    setIsLoading(true);
     try {
-      deleteAdmin({ variables: { deleteAdminId: adminId } });
+      await deleteAdmin({ variables: { deleteAdminId: adminId } });
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 4000);
     } catch (error: any) {
       console.log(error);
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 4000);
+    } finally {
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 4000);
     }
   };
 
@@ -87,23 +99,22 @@ const DeleteAdminCard = () => {
           <Button
             onClick={() => {
               handleDeleteAdmin(adminDetails._id);
-              handleAdminDetails({
-                _id: '',
-                name: '',
-                contactNumber: '',
-                email: '',
-                createdAt: '',
-              });
-              !loading && handleDeleteClick();
+              setTimeout(() => {
+                handleAdminDetails({
+                  _id: '',
+                  name: '',
+                  contactNumber: '',
+                  email: '',
+                  createdAt: '',
+                });
+                handleDeleteClick();
+              }, 5000);
             }}
             variant={'destructive'}
             className="bg-destructive text-destructive-foreground hover:bg-destructive/90 w-28"
             type="button"
           >
-            Continue{' '}
-            {loading && (
-              <Loader2 className="w-4 h-4 font-semibold ml-2 animate-spin" />
-            )}
+            {!isLoading ? 'Continue' : 'Deleting...'}
           </Button>
         </div>
       </div>

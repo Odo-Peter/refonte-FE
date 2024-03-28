@@ -44,6 +44,33 @@ export const CREATE_ADMIN = gql`
   }
 `;
 
+//Perform an update operation
+export const UPDATE_ADMIN_INFO = gql`
+  mutation UpdateAdmin(
+    $updateAdminId: String!
+    $name: String
+    $email: String
+    $contactNumber: String
+  ) {
+    updateAdmin(
+      id: $updateAdminId
+      name: $name
+      email: $email
+      contactNumber: $contactNumber
+    ) {
+      admin {
+        _id
+        name
+        email
+        contactNumber
+        role
+        createdAt
+        updatedAt
+      }
+    }
+  }
+`;
+
 //Perfom an admin delete operation
 export const REMOVE_ADMIN = gql`
   mutation DeleteAdmin($deleteAdminId: String!) {
